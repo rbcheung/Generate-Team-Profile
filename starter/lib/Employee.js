@@ -6,9 +6,19 @@ class Employee {
     this.email = email;
   }
 
-  getName() {}
+  getName() {
+    return this.name;
+  }
 
-  getId() {}
-  getEmail() {}
-  getRole() {}
+  getId() {
+    return this.id;
+  }
+  getEmail() {
+    return this.email;
+  }
+  getRole() {
+    return "Employee";
+  }
 }
+
+module.exports = Employee;

@@ -10,6 +10,113 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 
+const employees = [];
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
+function initPrompt() {
+  inquirer.prompt([
+    {
+      type: "input",
+      name: "managerName",
+      message: "Please enter the team managers name",
+    },
+    {
+      type: "input",
+      name: "managerId",
+      message: "Please enter the team managers ID",
+    },
+    {
+      type: "input",
+      name: "managerEmail",
+      message: "Please enter the team managers email",
+    },
+    {
+      type: "input",
+      name: "mangerOfficeNumber",
+      message: "Please enter the team managers office number ",
+    }]
+  ).then (function (){
+   addMembers()
+  })
+}
 
+function addMembers() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "member",
+        message: "Which type of team member would you like to add?",
+        choices: [
+          "Engineer",
+          "Intern",
+          "Finish building the team instead.",
+        ],
+      },
+    ])
+    .then(function (choice) {
+      if (choice.member === "Engineer") {
+        inquirer.prompt([
+          {
+            type: "input",
+            name: "name",
+            message: "Please enter Engineer Name.",
+          },
+          {
+            type: "input",
+            name: "id",
+            message: "Please enter Engineers ID.",
+          },
+          {
+            type: "input",
+            name: "github",
+            message: "Please enter Engineers Github Username.",
+          },
+        ]).then(function (engineerChoice){
+          var newEngineer = new Engineer(engineerChoice.name,engineerChoice.id,engineerChoice.github)
+          // console.log(newEngineer)
+          employees.push(newEngineer)
+          addMembers()
+        })
+      
+      } else if (choice.member === "Intern") {
+        inquirer.prompt([
+          {
+            type: "input",
+            name: "name",
+            message: "Please enter Interns Name.",
+          },
+          {
+            type: "input",
+            name: "id",
+            message: "Please enter Interns ID.",
+          },
+          {
+            type: "input",
+            name: "email",
+            message: "Please enter Interns Email",
+          },
+          {
+            type: "input",
+            name: "school",
+            message: "Please enter Interns school",
+          },
+        ]).then(function (internChoice){
+          var newIntern = new Intern(internChoice.name, internChoice.id, internChoice.email, internChoice.school)
+          // console.log(newIntern)
+          employees.push(newIntern)
+          console.log(employees)
+          addMembers()
+        })
+  
+      }
+    })
+}
+
+initPrompt()
+const html = render(employees)
+fs.writeFile(outputPath,html, (err) => {
+  if (err) throw err;
+  console.log("success")
+
+})

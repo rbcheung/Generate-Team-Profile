@@ -1,0 +1,20 @@
+body {
+    background-image: url("../../assets/background-img.jpeg");
+    background-size: cover !important;
+}
+.employee-card {
+    margin: 20px;
+    padding: 0px;
+
+}
+.card-header {
+    color: white;
+    background-color: palevioletred;
+ 
+}
+.jumbotron {
+    color: white;
+    background-color: palevioletred;
+    height: 10%;
+    padding: 10px;
+}

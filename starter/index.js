@@ -55,6 +55,11 @@ function initPrompt() {
         type: "input",
         name: "officeNumber",
         message: "Please enter the team managers office number ",
+        validate: (input) => {
+          const value = !isNaN(parseInt(input)) 
+          return value || "Please use numbers"
+
+        }
       },
     ])
     .then(function (data) {
@@ -87,21 +92,45 @@ function addMembers() {
               type: "input",
               name: "name",
               message: "Please enter Engineer Name.",
+              validate: (input) => {
+                if (input.trim().length === 0) {
+                  return "Nothing entered. Please try again."
+                }
+                return true
+              } 
             },
             {
               type: "input",
               name: "id",
               message: "Please enter Engineers ID.",
+              validate: (input) => {
+                const value = !isNaN(parseInt(input)) 
+                return value || "Please use numbers"
+      
+              }
             },
             {
               type: "input",
               name: "email",
               message: "Please enter email",
+              validate: (input) => {
+                const pattern = /^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/
+                if (input.match(pattern)) {
+                 return true
+                }
+                return "Email adress is invalid. Please try again."
+              }
             },
             {
               type: "input",
               name: "github",
               message: "Please enter Engineers Github Username.",
+              validate: (input) => {
+                if (input.trim().length === 0) {
+                  return "Nothing entered. Please try again."
+                }
+                return true
+              } 
             },
           ])
           .then(function (engineerChoice) {
@@ -122,21 +151,46 @@ function addMembers() {
               type: "input",
               name: "name",
               message: "Please enter Interns Name.",
+              validate: (input) => {
+                if (input.trim().length === 0) {
+                  return "Nothing entered. Please try again."
+                }
+                return true
+              } 
+              
             },
             {
               type: "input",
               name: "id",
               message: "Please enter Interns ID.",
+              validate: (input) => {
+                const value = !isNaN(parseInt(input)) 
+                return value || "Please use numbers"
+      
+              }
             },
             {
               type: "input",
               name: "email",
               message: "Please enter Interns Email",
+              validate: (input) => {
+                const pattern = /^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/
+                if (input.match(pattern)) {
+                 return true
+                }
+                return "Email adress is invalid. Please try again."
+              }
             },
             {
               type: "input",
               name: "school",
               message: "Please enter Interns school",
+              validate: (input) => {
+                if (input.trim().length === 0) {
+                  return "Nothing entered. Please try again."
+                }
+                return true
+              } 
             },
           ])
           .then(function (internChoice) {

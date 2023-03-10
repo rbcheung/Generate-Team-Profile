@@ -1,15 +1,11 @@
-# Module 12 Object-Oriented Programming: Team Profile Generator
+# Generate-Team-Profile
 
-## Your Task
+The purpose of this project was to get us to use what have learnt in the previous lessons and apply it to a more practical scenario.
 
-Your task is to take the given starter code and convert it into a working Node.js command-line application. This application will take in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person. You have been provided with tests, so make sure every part of your code passes each provided test.
+This project allowed us to practice using inquirer, classes, jest tests and Node.js. We were given starter code to work with however we had to make it a fully functional command-line application. This application starts by prompting the user a series of questions relating to employee information. Once the user has finished answering the questions a HTML will be generated using the data provided. Finally we needed to use jest to test that all of our classes were working as intended.
 
-## User Story
+This project required us to hit the following requirements;
 
-As a manager a user want to generate a webpage that displays my team's basic info so that a user have quick access to their emails and GitHub profiles.
-
-## Instructions
- 
 * Create a command-line application that accepts accepts user input using the provided starter code.   
   * Create classes for each team member provided and export them. The tests for these classes (in the `_tests_` directory) must ALL pass.     
     * The first class is an `Employee` parent class with the following properties and methods:       
@@ -60,83 +56,18 @@ As a manager a user want to generate a webpage that displays my team's basic inf
     * Write it to a file named `team.html` in the `output` folder. 
     * You can use the provided variable `outputPath` to target this location.
 
----
+## Application screenshots 
 
-## Mock-Up
+### This is a screenshot of the generated HTML
 
-The following image shows a mock-up of the generated HTML’s appearance and functionality:
+![Alt text](assets/website%20screenshot.png)
 
-![HTML webpage titled “My Team” features five boxes listing employee names, titles, and other key info.](./Assets/14-object-oriented-programming-challenge-demo.png)
+### This is a screenshot of all the successful tests.
 
-The styling in the image is just an example, so feel free to add your own.
+![Alt text](assets/test%20sucess.png)
 
----
 
-## Getting Started
 
-This Challenge will combine many of the skills we've covered so far. In addition to the User Story and Acceptance Criteria, we’ve provided some guidelines to help get started.
 
-Your application should use [Jest](https://www.npmjs.com/package/jest) for running the unit tests and [Inquirer](https://www.npmjs.com/package/inquirer) for collecting input from the user. The application will be invoked by using the following command:
 
-```bash
-node index.js
-```
 
----
-
-## Hints
-
-* You will want to make your methods as pure as possible. This means try to make your methods simple so that they are easier to test.
-
-* The different employee types should all inherit some methods and properties from a base class of `Employee`.
- 
-* Be sure to test out each class and verify it generates an object with the correct structure and methods. This structure will be crucial in order for the provided `render` function to work!
-  
-* You may need to check if the `output` folder exists and create it if it does not.
-
----
-
-## Grading Requirements
-
-This Challenge is graded based on the following criteria: 
-
-### Deliverables: 25%
-
-* A sample HTML file generated using the application must be submitted.
-
-* Your GitHub repository containing your application code.
-
-### Technical Acceptance Criteria: 50%
-
-* Satisfies all of the preceding acceptance criteria plus the following:
-
-	* Uses the [Inquirer package](https://www.npmjs.com/package/inquirer).
-
-	* All tests pass using the [Jest package](https://www.npmjs.com/package/jest).
-
-  * The application must have `Employee`, `Manager`, `Engineer`, and `Intern` classes.
-
-### Repository Quality: 25%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains a high-quality readme with description.
-
----
-
-## Review
-
-You are required to submit the following for review:
-
-* A sample HTML file generated using your application.
-
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
-
----
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.

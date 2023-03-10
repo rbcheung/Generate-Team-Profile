@@ -20,6 +20,7 @@ function initPrompt() {
         type: "input",
         name: "name",
         message: "Please enter the team managers name",
+        // Validation added to check if nothing is entered.
         validate: (input) => {
           if (input.trim().length === 0) {
             return "Nothing entered. Please try again."
@@ -31,6 +32,7 @@ function initPrompt() {
         type: "input",
         name: "id",
         message: "Please enter the team managers ID",
+        // Validation added to check if input is not a number.
         validate: (input) => {
           const value = !isNaN(parseInt(input)) 
           return value || "Please use numbers"
@@ -43,6 +45,7 @@ function initPrompt() {
         type: "input",
         name: "email",
         message: "Please enter the team managers email",
+        // Validation added to check if email address is valid.
         validate: (input) => {
           const pattern = /^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/
           if (input.match(pattern)) {

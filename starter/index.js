@@ -20,16 +20,36 @@ function initPrompt() {
         type: "input",
         name: "name",
         message: "Please enter the team managers name",
+        validate: (input) => {
+          if (input.trim().length === 0) {
+            return "Nothing entered. Please try again."
+          }
+          return true
+        } 
       },
       {
         type: "input",
         name: "id",
         message: "Please enter the team managers ID",
+        validate: (input) => {
+          const value = !isNaN(parseInt(input)) 
+          return value || "Please use numbers"
+
+        }
+        
+ 
       },
       {
         type: "input",
         name: "email",
         message: "Please enter the team managers email",
+        validate: (input) => {
+          const pattern = /^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/
+          if (input.match(pattern)) {
+           return true
+          }
+          return "Email adress is invalid. Please try again."
+        }
       },
       {
         type: "input",
@@ -75,6 +95,11 @@ function addMembers() {
             },
             {
               type: "input",
+              name: "email",
+              message: "Please enter email",
+            },
+            {
+              type: "input",
               name: "github",
               message: "Please enter Engineers Github Username.",
             },
@@ -83,6 +108,7 @@ function addMembers() {
             var newEngineer = new Engineer(
               engineerChoice.name,
               engineerChoice.id,
+              engineerChoice.email,
               engineerChoice.github
             );
             // console.log(newEngineer)
@@ -122,11 +148,11 @@ function addMembers() {
             );
             // console.log(newIntern)
             employees.push(newIntern);
-            console.log(employees);
             addMembers();
           });
       } else if (choice.member === "Finish building the team instead.") {
         const teamhtml = render(employees);
+        console.log(employees)
         fs.writeFile(outputPath, teamhtml, (err) => {
           if (err) throw err;
           // console.log("success")
